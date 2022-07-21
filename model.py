@@ -6,7 +6,7 @@ import torch.nn as nn
 The residual block as the basic block for the backbone:
 '''
 class BasicBlock(nn.Module):
-    def __int__(self, inplanes, planes):
+    def __init__(self, inplanes, planes):
         super().__init__()
 
         self.conv1 = nn.Conv2d(inplanes, planes[0], kernel_size=1, stride=1, padding=0, bias=False)
@@ -41,9 +41,9 @@ class DarkNet(nn.Module):
         self.inplanes = 32
 
         # 416,416,3 -> 416,416,32
-        self.conv1  = nn.Conv2d(3, self.inplanes, kernel_size=3, stride=1, padding=1, bias=False)
-        self.bn1    = nn.BatchNorm2d(self.inplanes)
-        self.relu1  = nn.LeakyReLU(0.1)
+        self.conv1 = nn.Conv2d(3, self.inplanes, kernel_size=3, stride=1, padding=1, bias=False)
+        self.bn1 = nn.BatchNorm2d(self.inplanes)
+        self.relu1 = nn.LeakyReLU(0.1)
         # 416,416,32 -> 208,208,64
         self.layer1 = self._make_layer([32, 64], layers[0])
         # 208,208,64 -> 104,104,128
@@ -95,3 +95,5 @@ class DarkNet(nn.Module):
 def darknet53():
     model = DarkNet([1, 2, 8, 8, 4])
     return model
+
+darknet53()
