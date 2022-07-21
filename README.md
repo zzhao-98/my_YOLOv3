@@ -1,2 +1,2 @@
 # my_YOLOv3
-The YOLOv3 build by myself.
+The YOLOv3 build by ourselves.
